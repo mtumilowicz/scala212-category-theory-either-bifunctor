@@ -3,9 +3,9 @@ import org.scalatest.{FunSuite, Matchers}
 /**
   * Created by mtumilowicz on 2019-01-09.
   */
-class FunctiorialEitherTest extends FunSuite with Matchers {
+class BiFunctiorialEitherTest extends FunSuite with Matchers {
 
-  implicit def toFunctorialEither[X, Y](either: Either[X, Y]) = new FunctiorialEither(either)
+  implicit def toBiFunctorialEither[X, Y](either: Either[X, Y]) = new BiFunctiorialEither(either)
 
   test("testBimap") {
     Right(1).map(_ * 2) should be (Right(2))
