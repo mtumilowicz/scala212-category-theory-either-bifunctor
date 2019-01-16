@@ -8,8 +8,8 @@ class BiFunctiorialEither[X, Y](val either: Either[X, Y]) {
     case Right(y) => Right(second(y))
   }
 
-  def first[X1](f: Function[X, X1]) = bimap(f, identity)
+  def first[X1](f: Function[X, X1]): Either[X1, Y] = bimap(f, identity)
 
-  def second[Y1](f: Function[Y, Y1]) = bimap(identity, f)
+  def second[Y1](f: Function[Y, Y1]): Either[X, Y1] = bimap(identity, f)
   
 }
