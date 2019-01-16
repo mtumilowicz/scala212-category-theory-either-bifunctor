@@ -10,7 +10,7 @@ functorial laws - associativity and identity preservation -
 from functors to bifunctors, it’s enough to check them 
 separately for each argument.
 
-**As far as we stay only in Cats category (functors are morphisms)
+**As far as we stay only in Cats category (functors as a morphisms)
 the above statement is true. But not in general:** 
 https://ncatlab.org/nlab/show/funny+tensor+product#separate_functoriality
 
