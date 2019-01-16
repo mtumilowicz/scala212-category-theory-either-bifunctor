@@ -9,6 +9,11 @@ functors in both arguments. So instead of translating
 functorial laws - associativity and identity preservation - 
 from functors to bifunctors, it’s enough to check them 
 separately for each argument.
+
+**As far as we stay only in Cats category (functors are morphisms)
+the above statement is true. But not in general:** 
+https://ncatlab.org/nlab/show/funny+tensor+product#separate_functoriality
+
 ```
 class Bifunctor f where
     bimap :: (a -> c) -> (b -> d) -> f a b -> f c d
@@ -38,4 +43,10 @@ def bimap[X1, Y1](first: X => X1, second: Y => Y1): Either[X1, Y1] = either matc
   case Left(x) => Left(first(x))
   case Right(y) => Right(second(y))
 }
+```
+and derived implementations of `first` and `second`
+```
+def first[X, X1, Y](f: Function[X, X1]) = bimap(f, identity)
+
+def second[X, Y, Y1](f: Function[Y, Y1]) = bimap(identity, f)
 ```
