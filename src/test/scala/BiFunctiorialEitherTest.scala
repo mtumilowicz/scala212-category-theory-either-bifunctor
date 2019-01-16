@@ -6,10 +6,10 @@ import org.scalatest.{FunSuite, Matchers}
 class BiFunctiorialEitherTest extends FunSuite with Matchers {
 
   implicit def toBiFunctorialEither[X, Y](either: Either[X, Y]) = new BiFunctiorialEither(either)
-  
-  test("testMap") {
-    Right[Integer, String]("a").bimap(_ * 2, _ + " mapped") should be (Right("a mapped"))
-    Left[Integer, String](1).bimap(_ * 2, _ + " mapped") should be (Left(2))
+
+  test("bimap test") {
+    Right[Integer, String]("a").bimap(_ * 2, _ + " mapped") should be(Right("a mapped"))
+    Left[Integer, String](1).bimap(_ * 2, _ + " mapped") should be(Left(2))
   }
 
 }
