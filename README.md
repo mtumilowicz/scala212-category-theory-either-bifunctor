@@ -45,9 +45,20 @@ def bimap[X1, Y1](first: X => X1, second: Y => Y1): Either[X1, Y1] = either matc
   case Right(y) => Right(second(y))
 }
 ```
-and derived implementations of `first` and `second`
+with derived implementations of `first` and `second`
 ```
 def first[X, X1, Y](f: Function[X, X1]) = bimap(f, identity)
 
 def second[X, Y, Y1](f: Function[Y, Y1]) = bimap(identity, f)
+```
+and tests
+```
+Right[Int, String]("a").bimap(_ * 2, _ + " mapped") should be(Right("a mapped"))
+Left[Int, String](1).bimap(_ * 2, _ + " mapped") should be(Left(2))
+
+def f(i: Int) = i * 2
+Left[Int, String](1).first(f) should be(Left(2))
+
+def f(s: String) = s + " mapped"
+Right[Int, String]("a").second(f) should be(Right("a mapped"))
 ```
