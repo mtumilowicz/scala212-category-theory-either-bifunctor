@@ -47,9 +47,9 @@ def bimap[X1, Y1](first: X => X1, second: Y => Y1): Either[X1, Y1] = either matc
 ```
 with derived implementations of `first` and `second`
 ```
-def first[X, X1, Y](f: Function[X, X1]) = bimap(f, identity)
+def first[X1](f: Function[X, X1]): Either[X1, Y] = bimap(f, identity)
 
-def second[X, Y, Y1](f: Function[Y, Y1]) = bimap(identity, f)
+def second[Y1](f: Function[Y, Y1]): Either[X, Y1] = bimap(identity, f)
 ```
 and tests
 ```
